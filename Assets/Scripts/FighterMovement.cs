@@ -1,24 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FighterMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    public Vector2 CurrentVelocity { get; private set; }
     
     private Rigidbody2D _rb;
     
-    void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Move(float direction)
+    private void Start()
     {
-        // Ensure direction is between -1 and 1
-        direction = Mathf.Clamp(direction, -1f, 1f);
-        
-        // Move the fighter
-        _rb.velocity = new Vector3(direction * speed, 0, 0);
+        CurrentVelocity = Vector2.zero;
+    }
+
+    private void Update()
+    {
+        CurrentVelocity = _rb.velocity;
+    }
+
+    public void SetHorizontalVelocity(float velocity)
+    {
+        var newVelocity = new Vector2(velocity, CurrentVelocity.y);
+        _rb.velocity = newVelocity;
+        CurrentVelocity = newVelocity;
     }
 }
