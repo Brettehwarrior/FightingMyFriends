@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Jerma Fighter Data
   m_EditorClassIdentifier: 
   walkVelocity: 5
+  jumpSpeed: 12

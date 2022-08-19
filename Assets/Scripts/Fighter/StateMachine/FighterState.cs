@@ -26,6 +26,8 @@ namespace Fighter.StateMachine
             startTime = Time.time;
             DoChecks();
             fighter.Anim.Play(_animationName);
+            
+            Debug.Log("Entering state" + _animationName);
         }
 
         public virtual void UpdateLogic()

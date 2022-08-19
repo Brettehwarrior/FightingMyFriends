@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 746241431}
   - component: {fileID: 746241430}
   - component: {fileID: 746241433}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,6 +635,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 465c1508-9e53-49c7-a77b-54ddfe43a7eb
     m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e09a9896-e160-47dc-b0cb-6137cdc2bdb3
+    m_ActionName: Player/Jump[/Keyboard/space,/XInputControllerWindows/rightShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -659,11 +663,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048990801}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0316a62158d1f54983b093104690908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainCollider: {fileID: 2048990807}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &2048990806
 Rigidbody2D:
   serializedVersion: 4

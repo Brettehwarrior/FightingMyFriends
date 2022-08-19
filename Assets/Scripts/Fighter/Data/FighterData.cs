@@ -7,5 +7,6 @@ namespace Fighter.Data
     {
         [Header("Movement")]
         public float walkVelocity = 10f;
+        public float jumpSpeed = 5f;
     }
 }

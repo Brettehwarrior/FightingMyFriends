@@ -6,14 +6,20 @@ namespace Fighter.StateMachine
 {
     public class Fighter : MonoBehaviour
     {
+        // Components
         public FighterStateMachine StateMachine { get; private set; }
         public PlayerInputHandler InputHandler { get; private set; }
         public FighterStateFactory States { get; private set; }
         
+        // Values
         public int FacingDirection { get; private set; }
+        public Vector2 Velocity { get; private set; }
+        public bool IsGrounded { get; private set; }
         
+        // Private members
         private FighterMovement _movement;
 
+        // Serialized Fields
         [SerializeField] private FighterData data;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
@@ -41,6 +47,8 @@ namespace Fighter.StateMachine
         
         private void FixedUpdate()
         {
+            Velocity = _movement.CurrentVelocity;
+            IsGrounded = _movement.IsGrounded;
             StateMachine.CurrentState.UpdatePhysics();
         }
 
@@ -57,10 +65,15 @@ namespace Fighter.StateMachine
             }
         }
 
-        public void Flip()
+        private void Flip()
         {
             FacingDirection = -FacingDirection;
             spriteRenderer.flipX = FacingDirection == -1;
+        }
+        
+        public void Jump(float velocity)
+        {
+            _movement.Jump(velocity);
         }
     }
 }

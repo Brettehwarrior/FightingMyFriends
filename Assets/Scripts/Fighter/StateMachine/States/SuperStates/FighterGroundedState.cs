@@ -20,7 +20,13 @@ namespace DefaultNamespace
         public override void UpdateLogic()
         {
             base.UpdateLogic();
-            Movement = fighter.InputHandler.Movement;
+            Movement = fighter.InputHandler.MovementInput;
+            
+            // Jump transition
+            if (fighter.InputHandler.JumpInput)
+            {
+                stateMachine.ChangeState(fighter.States.JumpState);
+            }
         }
 
         public override void UpdatePhysics()
