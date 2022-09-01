@@ -19,7 +19,7 @@ namespace Fighter.StateMachine.States.SubStates
         public override void CheckTransitions()
         {
             base.CheckTransitions();
-            if (fighter.Velocity.y <= 0)
+            if (fighter.Velocity.y < 0)
             {
                 // Transition to falling state
                 stateMachine.ChangeState(State.Fall);

@@ -56,7 +56,7 @@ public class FighterMovement : MonoBehaviour
         var bounds = terrainCollider.bounds;
         
         // Cast rays from center of collider to bottom of collider + skin width
-        for (float horizontalOffset = -bounds.extents.x; horizontalOffset < bounds.extents.x; horizontalOffset += bounds.extents.x * 2 / GroundCheckRayCount)
+        for (var horizontalOffset = -bounds.extents.x; horizontalOffset < bounds.extents.x; horizontalOffset += bounds.extents.x * 2 / GroundCheckRayCount)
         {
             var origin = bounds.center + new Vector3(horizontalOffset, 0, 0);
             var hit = Physics2D.Raycast(origin, Vector2.down, bounds.extents.y + GroundCheckSkinWidth, terrainLayer);
@@ -70,5 +70,7 @@ public class FighterMovement : MonoBehaviour
                 return;
             }
         }
+        
+        IsGrounded = false;
     }
 }
