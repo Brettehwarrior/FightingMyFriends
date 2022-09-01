@@ -13,7 +13,7 @@ public class FighterMovement : MonoBehaviour
     
     private Rigidbody2D _rb;
     
-    private const float GroundCheckSkinWidth = 0.01f;
+    private const float GroundCheckSkinWidth = 0.05f;
     private const int GroundCheckRayCount = 20;
     
     private void Awake()
@@ -34,6 +34,11 @@ public class FighterMovement : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGrounded();
+    }
+    
+    public void SetGravityScale(float scale)
+    {
+        _rb.gravityScale = scale;
     }
 
     public void SetHorizontalVelocity(float velocity)

@@ -30,6 +30,7 @@ namespace Fighter.StateMachine
         {
             InputHandler = GetComponent<PlayerInputHandler>();
             _movement = GetComponent<FighterMovement>();
+            _movement.SetGravityScale(fighterData.gravityScale);
             StateMachine = new FighterStateMachine();
         }
 
