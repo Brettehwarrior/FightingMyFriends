@@ -1,47 +1,31 @@
 ﻿using Fighter.Data;
-using Fighter.StateMachine;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Fighter.StateMachine.States.SuperStates
 {
     public class FighterGroundedState : FighterState
     {
-        protected Vector2 Movement;
+        protected Vector2 MovementInput;
         
-        public FighterGroundedState(Fighter.StateMachine.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
+        public FighterGroundedState(global::Fighter.StateMachine.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
-
-        public override void Enter()
+        
+        public override void Update()
         {
-            base.Enter();
+            base.Update();
+            MovementInput = fighter.InputHandler.MovementInput;
         }
-
-        public override void UpdateLogic()
+        
+        public override void CheckTransitions()
         {
-            base.UpdateLogic();
-            Movement = fighter.InputHandler.MovementInput;
+            base.CheckTransitions();
             
             // Jump transition
             if (fighter.InputHandler.JumpInput)
             {
-                stateMachine.ChangeState(fighter.States.JumpState);
+                stateMachine.ChangeState(State.Jump);
             }
-        }
-
-        public override void UpdatePhysics()
-        {
-            base.UpdatePhysics();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-        }
-
-        public override void DoChecks()
-        {
-            base.DoChecks();
         }
     }
 }

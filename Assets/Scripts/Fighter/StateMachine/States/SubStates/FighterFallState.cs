@@ -1,5 +1,5 @@
-﻿using DefaultNamespace;
-using Fighter.Data;
+﻿using Fighter.Data;
+using Fighter.StateMachine.States.SuperStates;
 
 namespace Fighter.StateMachine.States.SubStates
 {

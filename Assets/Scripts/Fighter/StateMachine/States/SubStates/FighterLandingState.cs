@@ -1,5 +1,5 @@
-﻿using DefaultNamespace;
-using Fighter.Data;
+﻿using Fighter.Data;
+using Fighter.StateMachine.States.SuperStates;
 
 namespace Fighter.StateMachine.States.SubStates
 {
@@ -8,14 +8,11 @@ namespace Fighter.StateMachine.States.SubStates
         public FighterLandingState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
-
-        public override void UpdateLogic()
+        public override void CheckTransitions()
         {
-            base.UpdateLogic();
-            
             if (fighter.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
             {
-                stateMachine.ChangeState(fighter.States.IdleState);
+                stateMachine.ChangeState(State.Idle);
             }
         }
     }

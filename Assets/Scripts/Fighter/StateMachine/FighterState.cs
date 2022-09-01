@@ -24,20 +24,24 @@ namespace Fighter.StateMachine
         public virtual void Enter()
         {
             startTime = Time.time;
-            DoChecks();
             fighter.Anim.Play(_animationName);
             
             Debug.Log("Entering state" + _animationName);
         }
 
-        public virtual void UpdateLogic()
+        public virtual void Update()
+        {
+            
+        }
+        
+        public virtual void FixedUpdate()
         {
             
         }
 
-        public virtual void UpdatePhysics()
+        public virtual void LateUpdate()
         {
-            DoChecks();
+            
         }
 
         public virtual void Exit()
@@ -45,16 +49,9 @@ namespace Fighter.StateMachine
             
         }
 
-        public virtual void DoChecks()
+        public virtual void CheckTransitions()
         {
             
-        }
-        
-        protected void SwitchState(FighterState newState)
-        {
-            // Exit();
-            // newState.Enter();
-            // stateMachine.CurrentState = newState;
         }
     }
 }

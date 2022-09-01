@@ -1,6 +1,7 @@
 ﻿using System;
 using Fighter.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Fighter.StateMachine
 {
@@ -9,7 +10,6 @@ namespace Fighter.StateMachine
         // Components
         public FighterStateMachine StateMachine { get; private set; }
         public PlayerInputHandler InputHandler { get; private set; }
-        public FighterStateFactory States { get; private set; }
         
         // Values
         public int FacingDirection { get; private set; }
@@ -20,7 +20,7 @@ namespace Fighter.StateMachine
         private FighterMovement _movement;
 
         // Serialized Fields
-        [SerializeField] private FighterData data;
+        [SerializeField] private FighterData fighterData;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -31,25 +31,30 @@ namespace Fighter.StateMachine
             InputHandler = GetComponent<PlayerInputHandler>();
             _movement = GetComponent<FighterMovement>();
             StateMachine = new FighterStateMachine();
-            States = new FighterStateFactory(this, StateMachine, data);
         }
 
         private void Start()
         {
-            StateMachine.Initialize(States.IdleState);
+            StateMachine.Initialize(State.Idle, this, fighterData);
             FacingDirection = 1;
         }
 
         private void Update()
         {
-            StateMachine.CurrentState.UpdateLogic();
+            StateMachine.CurrentState.Update();
         }
         
         private void FixedUpdate()
         {
             Velocity = _movement.CurrentVelocity;
             IsGrounded = _movement.IsGrounded;
-            StateMachine.CurrentState.UpdatePhysics();
+            StateMachine.CurrentState.FixedUpdate();
+        }
+
+        private void LateUpdate()
+        {
+            StateMachine.CurrentState.LateUpdate();
+            StateMachine.CurrentState.CheckTransitions();
         }
 
         public void SetHorizontalVelocity(float velocity)

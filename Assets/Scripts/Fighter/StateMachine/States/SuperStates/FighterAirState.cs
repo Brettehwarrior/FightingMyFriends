@@ -1,27 +1,21 @@
 ﻿using Fighter.Data;
-using Fighter.StateMachine;
 
-namespace DefaultNamespace
+namespace Fighter.StateMachine.States.SuperStates
 {
     public class FighterAirState : FighterState
     {
-        public FighterAirState(Fighter.StateMachine.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
+        public FighterAirState(global::Fighter.StateMachine.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
 
-        public override void Enter()
+        public override void CheckTransitions()
         {
-            base.Enter();
-        }
-        
-        public override void UpdatePhysics()
-        {
-            base.UpdatePhysics();
+            base.CheckTransitions();
             
             // Check if on the ground
             if (fighter.IsGrounded)
             {
-                stateMachine.ChangeState(fighter.States.LandingState);
+                stateMachine.ChangeState(State.Land);
             }
         }
     }

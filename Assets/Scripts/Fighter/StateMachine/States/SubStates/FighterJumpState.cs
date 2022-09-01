@@ -1,5 +1,5 @@
-﻿using DefaultNamespace;
-using Fighter.Data;
+﻿using Fighter.Data;
+using Fighter.StateMachine.States.SuperStates;
 using UnityEngine;
 
 namespace Fighter.StateMachine.States.SubStates
@@ -16,14 +16,13 @@ namespace Fighter.StateMachine.States.SubStates
             fighter.Jump(fighterData.jumpSpeed);
         }
 
-        public override void UpdatePhysics()
+        public override void CheckTransitions()
         {
-            base.UpdatePhysics();
-
+            base.CheckTransitions();
             if (fighter.Velocity.y <= 0)
             {
                 // Transition to falling state
-                stateMachine.ChangeState(fighter.States.FallState);
+                stateMachine.ChangeState(State.Fall);
             }
         }
     }

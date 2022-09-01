@@ -1,5 +1,5 @@
-﻿using DefaultNamespace;
-using Fighter.Data;
+﻿using Fighter.Data;
+using Fighter.StateMachine.States.SuperStates;
 using UnityEngine;
 
 namespace Fighter.StateMachine.States.SubStates
@@ -16,30 +16,15 @@ namespace Fighter.StateMachine.States.SubStates
             
             fighter.SetHorizontalVelocity(0f);
         }
-
-        public override void UpdateLogic()
+        
+        public override void CheckTransitions()
         {
-            base.UpdateLogic();
+            base.CheckTransitions();
 
-            if (Movement.x != 0f)
+            if (MovementInput.x != 0f)
             {
-                stateMachine.ChangeState(fighter.States.WalkState);
+                stateMachine.ChangeState(State.Walk);
             }
-        }
-
-        public override void UpdatePhysics()
-        {
-            base.UpdatePhysics();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-        }
-
-        public override void DoChecks()
-        {
-            base.DoChecks();
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using DefaultNamespace;
-using Fighter.Data;
+﻿using Fighter.Data;
+using Fighter.StateMachine.States.SuperStates;
 
 namespace Fighter.StateMachine.States.SubStates
 {
@@ -8,39 +8,24 @@ namespace Fighter.StateMachine.States.SubStates
         public FighterWalkState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
-
-        public override void Enter()
+        
+        public override void Update()
         {
-            base.Enter();
-        }
+            base.Update();
 
-        public override void UpdateLogic()
-        {
-            base.UpdateLogic();
-
-            fighter.TryFlip(Movement.x);
-            fighter.SetHorizontalVelocity(fighterData.walkVelocity * Movement.x);
+            fighter.TryFlip(MovementInput.x);
+            fighter.SetHorizontalVelocity(fighterData.walkVelocity * MovementInput.x);
             
-            // Transition out
-            if (Movement.x == 0f)
+        }
+        
+        public override void CheckTransitions()
+        {
+            base.CheckTransitions();
+            
+            if (MovementInput.x == 0f)
             {
-                stateMachine.ChangeState(fighter.States.IdleState);
+                stateMachine.ChangeState(State.Idle);
             }
-        }
-
-        public override void UpdatePhysics()
-        {
-            base.UpdatePhysics();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-        }
-
-        public override void DoChecks()
-        {
-            base.DoChecks();
         }
     }
 }
