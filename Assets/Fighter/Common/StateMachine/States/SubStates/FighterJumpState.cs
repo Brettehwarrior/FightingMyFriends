@@ -1,7 +1,7 @@
-﻿using Fighter.Data;
-using Fighter.StateMachine.States.SuperStates;
+﻿using Fighter.Common.StateMachine.States.SuperStates;
+using Fighter.Data;
 
-namespace Fighter.StateMachine.States.SubStates
+namespace Fighter.Common.StateMachine.States.SubStates
 {
     public class FighterJumpState : FighterAirState
     {
@@ -18,7 +18,7 @@ namespace Fighter.StateMachine.States.SubStates
         public override void CheckTransitions()
         {
             base.CheckTransitions();
-            if (fighter.Velocity.y < 0)
+            if (fighter.Velocity.y <= 0)
             {
                 // Transition to falling state
                 stateMachine.ChangeState(State.Fall);

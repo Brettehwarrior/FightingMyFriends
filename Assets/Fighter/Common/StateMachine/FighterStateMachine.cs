@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using Fighter.Common.StateMachine.States.SubStates;
 using Fighter.Data;
-using Fighter.StateMachine.States.SubStates;
 
-namespace Fighter.StateMachine
+namespace Fighter.Common.StateMachine
 {
     public enum State
     {
@@ -37,8 +37,8 @@ namespace Fighter.StateMachine
         public void ChangeState(State stateType)
         {
             CurrentState.Exit();
+            _states[stateType].Enter();
             CurrentState = _states[stateType];
-            CurrentState.Enter();
         }
     }
 }

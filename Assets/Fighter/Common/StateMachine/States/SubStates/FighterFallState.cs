@@ -1,7 +1,7 @@
-﻿using Fighter.Data;
-using Fighter.StateMachine.States.SuperStates;
+﻿using Fighter.Common.StateMachine.States.SuperStates;
+using Fighter.Data;
 
-namespace Fighter.StateMachine.States.SubStates
+namespace Fighter.Common.StateMachine.States.SubStates
 {
     public class FighterFallState : FighterAirState
     {
@@ -9,16 +9,5 @@ namespace Fighter.StateMachine.States.SubStates
         {
         }
 
-
-        public override void CheckTransitions()
-        {
-            base.CheckTransitions();
-            
-            // Check if on the ground
-            if (fighter.IsGrounded)
-            {
-                stateMachine.ChangeState(State.Land);
-            }
-        }
     }
 }

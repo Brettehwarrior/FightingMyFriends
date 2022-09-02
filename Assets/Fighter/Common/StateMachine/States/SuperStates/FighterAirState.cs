@@ -1,7 +1,7 @@
 ﻿using System;
 using Fighter.Data;
 
-namespace Fighter.StateMachine.States.SuperStates
+namespace Fighter.Common.StateMachine.States.SuperStates
 {
     public class FighterAirState : FighterState
     {
@@ -30,6 +30,17 @@ namespace Fighter.StateMachine.States.SuperStates
             if (MovementInput.y < 0)
             {
                 fighter.SetVerticalVelocity(fighterData.terminalVelocity);
+            }
+        }
+        
+        public override void CheckTransitions()
+        {
+            base.CheckTransitions();
+            
+            // Check if on the ground
+            if (fighter.IsGrounded && fighter.Velocity.y < 0)
+            {
+                stateMachine.ChangeState(State.Land);
             }
         }
     }

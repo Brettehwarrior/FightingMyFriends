@@ -1,13 +1,13 @@
 ﻿using Fighter.Data;
 using UnityEngine;
 
-namespace Fighter.StateMachine
+namespace Fighter.Common.StateMachine
 {
     public abstract class FighterState
     {
-        protected Common.Fighter fighter;
-        protected FighterStateMachine stateMachine;
-        protected FighterData fighterData;
+        protected readonly Fighter fighter;
+        protected readonly FighterStateMachine stateMachine;
+        protected readonly FighterData fighterData;
 
         protected Vector2 MovementInput;
 
@@ -28,7 +28,7 @@ namespace Fighter.StateMachine
             startTime = Time.time;
             fighter.Anim.Play(_animationName);
             
-            // Debug.Log("Entering " + _animationName);
+            Debug.Log("Entering " + _animationName);
         }
 
         public virtual void Update()

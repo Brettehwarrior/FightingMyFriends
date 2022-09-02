@@ -1,6 +1,6 @@
 ﻿using System;
+using Fighter.Common.StateMachine;
 using Fighter.Data;
-using Fighter.StateMachine;
 using UnityEngine;
 
 namespace Fighter.Common

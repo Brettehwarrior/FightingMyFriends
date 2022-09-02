@@ -1,6 +1,6 @@
 ﻿using Fighter.Data;
 
-namespace Fighter.StateMachine.States.SuperStates
+namespace Fighter.Common.StateMachine.States.SuperStates
 {
     public class FighterGroundedState : FighterState
     {
