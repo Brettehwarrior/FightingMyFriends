@@ -9,6 +9,7 @@ namespace Fighter.StateMachine.States.SubStates
         {
         }
 
+
         public override void CheckTransitions()
         {
             base.CheckTransitions();

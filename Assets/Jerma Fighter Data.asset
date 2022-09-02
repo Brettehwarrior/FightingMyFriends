@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Jerma Fighter Data
   m_EditorClassIdentifier: 
   walkVelocity: 5
-  jumpSpeed: 14
-  gravityScale: 2.34
+  jumpSpeed: 18.39
+  gravityScale: 3.06
+  terminalVelocity: -20
   maxAirSpeed: 12
-  airAcceleration: 1
+  airAcceleration: 1.12
+  airFriction: 0.914

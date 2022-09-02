@@ -8,7 +8,7 @@ namespace Fighter.StateMachine.States.SuperStates
         public FighterGroundedState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
-        
+
         public override void CheckTransitions()
         {
             base.CheckTransitions();
@@ -17,6 +17,11 @@ namespace Fighter.StateMachine.States.SuperStates
             if (fighter.InputHandler.JumpInput)
             {
                 stateMachine.ChangeState(State.Jump);
+            }
+            // Fall transition
+            else if (!fighter.IsGrounded)
+            {
+                stateMachine.ChangeState(State.Fall);
             }
         }
     }

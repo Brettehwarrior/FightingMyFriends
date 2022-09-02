@@ -62,6 +62,11 @@ namespace Fighter.StateMachine
         {
             _movement.SetHorizontalVelocity(velocity);
         }
+        
+        public void SetVerticalVelocity(float velocity)
+        {
+            _movement.SetVerticalVelocity(velocity);
+        }
 
         public void TryFlip(float x)
         {

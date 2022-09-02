@@ -48,6 +48,13 @@ public class FighterMovement : MonoBehaviour
         CurrentVelocity = newVelocity;
     }
     
+    public void SetVerticalVelocity(float velocity)
+    {
+        var newVelocity = new Vector2(CurrentVelocity.x, velocity);
+        _rb.velocity = newVelocity;
+        CurrentVelocity = newVelocity;
+    }
+    
     public void Jump(float velocity)
     {
         var newVelocity = new Vector2(CurrentVelocity.x, velocity);
@@ -61,13 +68,13 @@ public class FighterMovement : MonoBehaviour
         var bounds = terrainCollider.bounds;
         
         // Cast rays from center of collider to bottom of collider + skin width
-        for (var horizontalOffset = -bounds.extents.x; horizontalOffset < bounds.extents.x; horizontalOffset += bounds.extents.x * 2 / GroundCheckRayCount)
+        for (var horizontalOffset = -bounds.extents.x; horizontalOffset <= bounds.extents.x; horizontalOffset += bounds.extents.x * 2 / GroundCheckRayCount)
         {
-            var origin = bounds.center + new Vector3(horizontalOffset, 0, 0);
-            var hit = Physics2D.Raycast(origin, Vector2.down, bounds.extents.y + GroundCheckSkinWidth, terrainLayer);
+            var origin = bounds.center + new Vector3(horizontalOffset, -bounds.extents.y, 0);
+            var hit = Physics2D.Raycast(origin, Vector2.down, GroundCheckSkinWidth, terrainLayer);
             
             // Draw ray
-            Debug.DrawRay(origin, Vector2.down * (bounds.extents.y + GroundCheckSkinWidth), Color.red);
+            Debug.DrawRay(origin, Vector2.down * GroundCheckSkinWidth, Color.red);
             
             if (hit.collider != null)
             {
