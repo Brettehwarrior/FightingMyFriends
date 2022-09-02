@@ -5,7 +5,7 @@ namespace Fighter.StateMachine.States.SubStates
 {
     public class FighterFallState : FighterAirState
     {
-        public FighterFallState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
+        public FighterFallState(Common.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
 

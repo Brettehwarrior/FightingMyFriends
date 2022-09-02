@@ -1,12 +1,11 @@
 ﻿using Fighter.Data;
 using Fighter.StateMachine.States.SuperStates;
-using UnityEngine;
 
 namespace Fighter.StateMachine.States.SubStates
 {
     public class FighterIdleState : FighterGroundedState
     {
-        public FighterIdleState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
+        public FighterIdleState(Common.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
         

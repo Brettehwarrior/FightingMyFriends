@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Fighter.Data;
 using Fighter.StateMachine.States.SubStates;
-using UnityEngine;
 
 namespace Fighter.StateMachine
 {
@@ -20,7 +19,7 @@ namespace Fighter.StateMachine
 
         public FighterState CurrentState { get; private set; }
 
-        public void Initialize(State startingStateType, Fighter fighter, FighterData data)
+        public void Initialize(State startingStateType, Common.Fighter fighter, FighterData data)
         {
             _states = new Dictionary<State, FighterState>
             {

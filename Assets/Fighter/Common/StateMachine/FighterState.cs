@@ -5,7 +5,7 @@ namespace Fighter.StateMachine
 {
     public abstract class FighterState
     {
-        protected Fighter fighter;
+        protected Common.Fighter fighter;
         protected FighterStateMachine stateMachine;
         protected FighterData fighterData;
 
@@ -15,7 +15,7 @@ namespace Fighter.StateMachine
         
         private string _animationName;
         
-        protected FighterState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName)
+        protected FighterState(Common.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName)
         {
             this.fighter = fighter;
             this.stateMachine = stateMachine;

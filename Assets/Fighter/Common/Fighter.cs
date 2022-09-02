@@ -1,9 +1,9 @@
 ﻿using System;
 using Fighter.Data;
+using Fighter.StateMachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Fighter.StateMachine
+namespace Fighter.Common
 {
     public class Fighter : MonoBehaviour
     {

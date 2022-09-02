@@ -5,7 +5,7 @@ namespace Fighter.StateMachine.States.SubStates
 {
     public class FighterLandingState : FighterGroundedState
     {
-        public FighterLandingState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
+        public FighterLandingState(Common.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
         public override void CheckTransitions()
