@@ -9,6 +9,8 @@ namespace Fighter.StateMachine
         protected FighterStateMachine stateMachine;
         protected FighterData fighterData;
 
+        protected Vector2 MovementInput;
+
         protected float startTime;
         
         private string _animationName;
@@ -25,13 +27,11 @@ namespace Fighter.StateMachine
         {
             startTime = Time.time;
             fighter.Anim.Play(_animationName);
-            
-            Debug.Log("Entering state" + _animationName);
         }
 
         public virtual void Update()
         {
-            
+            MovementInput = fighter.InputHandler.MovementInput;
         }
         
         public virtual void FixedUpdate()

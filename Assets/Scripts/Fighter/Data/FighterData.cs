@@ -9,5 +9,7 @@ namespace Fighter.Data
         public float walkVelocity = 10f;
         public float jumpSpeed = 5f;
         public float gravityScale = 1f;
+        public float maxAirSpeed = 30f;
+        public float airAcceleration = 2f;
     }
 }
