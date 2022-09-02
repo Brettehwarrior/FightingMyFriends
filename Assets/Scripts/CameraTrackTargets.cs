@@ -7,16 +7,16 @@ public class CameraTrackTargets : MonoBehaviour
 {
     [SerializeField] private List<Transform> targets;
     [SerializeField] private float smoothTime = 0.5f;
-    [SerializeField] private float minZoom = 40f;
-    [SerializeField] private float maxZoom = 10f;
+    [SerializeField] private float nearPan = 3f;
+    [SerializeField] private float farPan = 20f;
+    [SerializeField] private AnimationCurve panCurve;
 
     private Vector3 _offset;
     private Vector3 _velocity;
-    private Camera _camera;
+    private Bounds _targetBounds;
 
     private void Awake()
     {
-        _camera = GetComponent<Camera>();
         _offset = transform.position;
     }
 
@@ -26,46 +26,33 @@ public class CameraTrackTargets : MonoBehaviour
         {
             return;
         }
-        
-        Move();
-        Zoom();
+
+        UpdateBounds();
+        UpdatePosition();
+    }
+
+    private void UpdateBounds()
+    {
+        _targetBounds = new Bounds(targets[0].position, Vector3.zero);
+        for (int i = 1; i < targets.Count; i++)
+        {
+            _targetBounds.Encapsulate(targets[i].position);
+        }
     }
     
-    private void Move()
+    private void UpdatePosition()
     {
-        Vector3 centerPoint = GetCenterPoint();
+        var cachedPosition = transform.position;
+        
+        // Move
+        Vector3 centerPoint = _targetBounds.center;
         Vector3 newPosition = centerPoint + _offset;
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, smoothTime);
-    }
-    
-    private void Zoom()
-    {
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / 5);
-        _camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, newZoom, Time.deltaTime);
-    }
-    
-    private float GetGreatestDistance()
-    {
-        var bounds = new Bounds(targets[0].position, Vector3.zero);
-        for (int i = 0; i < targets.Count; i++)
-        {
-            bounds.Encapsulate(targets[i].position);
-        }
-        return bounds.size.x;
-    }
-    
-    private Vector3 GetCenterPoint()
-    {
-        if (targets.Count == 1)
-        {
-            return targets[0].position;
-        }
         
-        var bounds = new Bounds(targets[0].position, Vector3.zero);
-        for (int i = 0; i < targets.Count; i++)
-        {
-            bounds.Encapsulate(targets[i].position);
-        }
-        return bounds.center;
+        // Pan
+        var maxRange = (_targetBounds.size.x > _targetBounds.size.y) ? _targetBounds.size.x : _targetBounds.size.y;
+        newPosition.z = nearPan + (panCurve.Evaluate( Math.Abs(maxRange / farPan)) * (farPan - nearPan));
+        
+        // Apply
+        transform.position = Vector3.SmoothDamp(cachedPosition, newPosition, ref _velocity, smoothTime);
     }
 }
