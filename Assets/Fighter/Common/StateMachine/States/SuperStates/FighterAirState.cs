@@ -5,13 +5,13 @@ namespace Fighter.Common.StateMachine.States.SuperStates
 {
     public class FighterAirState : FighterState
     {
-        public FighterAirState(Common.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
+        public FighterAirState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
-
-        public override void FixedUpdate()
+        
+        public override void Update()
         {
-            base.FixedUpdate();
+            base.Update();
             
             // Air movement
             

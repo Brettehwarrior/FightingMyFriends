@@ -4,7 +4,7 @@ namespace Fighter.Common.StateMachine.States.SuperStates
 {
     public class FighterGroundedState : FighterState
     {
-        public FighterGroundedState(Common.Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
+        public FighterGroundedState(Fighter fighter, FighterStateMachine stateMachine, FighterData fighterData, string animationName) : base(fighter, stateMachine, fighterData, animationName)
         {
         }
 

@@ -19,7 +19,7 @@ namespace Fighter.Common.StateMachine
 
         public FighterState CurrentState { get; private set; }
 
-        public void Initialize(State startingStateType, Common.Fighter fighter, FighterData data)
+        public void Initialize(State startingStateType, Fighter fighter, FighterData data)
         {
             _states = new Dictionary<State, FighterState>
             {
