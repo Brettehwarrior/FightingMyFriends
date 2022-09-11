@@ -842,6 +842,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 117870676832633920, guid: 78078935e9b613240bd37359dc4271c7, type: 3}
   m_PrefabInstance: {fileID: 1508237926}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1657552926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 117870677823679673, guid: 78078935e9b613240bd37359dc4271c7, type: 3}
+  m_PrefabInstance: {fileID: 117870677332143271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1962420877
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +929,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 117870676832633921, guid: 78078935e9b613240bd37359dc4271c7, type: 3}
+      propertyPath: spriteTransform
+      value: 
+      objectReference: {fileID: 1657552926}
     - target: {fileID: 117870676832633926, guid: 78078935e9b613240bd37359dc4271c7, type: 3}
       propertyPath: m_Name
       value: JERMA

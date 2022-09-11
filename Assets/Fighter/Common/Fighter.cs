@@ -23,6 +23,7 @@ namespace Fighter.Common
         [SerializeField] private FighterData fighterData;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Transform hurtboxParent;
 
         public Animator Anim => animator;
         
@@ -82,6 +83,7 @@ namespace Fighter.Common
         {
             FacingDirection = -FacingDirection;
             spriteRenderer.flipX = FacingDirection == -1;
+            hurtboxParent.Rotate(0, 180, 0);
         }
         
         public void Jump(float velocity)
