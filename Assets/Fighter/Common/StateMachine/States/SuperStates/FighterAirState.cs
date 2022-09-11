@@ -18,9 +18,13 @@ namespace Fighter.Common.StateMachine.States.SuperStates
             // Air horizontal drift
             if (MovementInput.x != 0 && (Math.Sign(MovementInput.x) != Math.Sign(fighter.Velocity.x) ||
                                          Math.Abs(fighter.Velocity.x) < fighterData.maxAirSpeed))
+            {
                 fighter.SetHorizontalVelocity(fighter.Velocity.x + MovementInput.x * fighterData.airAcceleration);
+            }
             else if (MovementInput.x == 0)
+            {
                 fighter.SetHorizontalVelocity(fighter.Velocity.x * fighterData.airFriction);
+            }
             
             // Terminal velocity
             if (fighter.Velocity.y < fighterData.terminalVelocity)

@@ -30,12 +30,12 @@ namespace Fighter.Common
         {
             InputHandler = GetComponent<PlayerInputHandler>();
             _movement = GetComponent<FighterMovement>();
-            _movement.SetGravityScale(fighterData.gravityScale);
             StateMachine = new FighterStateMachine();
         }
 
         private void Start()
         {
+            _movement.SetGravityScale(fighterData.gravityScale);
             StateMachine.Initialize(State.Idle, this, fighterData);
             FacingDirection = 1;
         }
