@@ -9,7 +9,7 @@ namespace Fighter.Common
     {
         // Components
         public FighterStateMachine StateMachine { get; private set; }
-        public PlayerInputHandler InputHandler { get; private set; }
+        public FighterInputHandler InputHandler { get; private set; }
         
         // Values
         public int FacingDirection { get; private set; }
@@ -28,16 +28,18 @@ namespace Fighter.Common
         
         private void Awake()
         {
-            InputHandler = GetComponent<PlayerInputHandler>();
+            InputHandler = GetComponent<FighterInputHandler>();
             _movement = GetComponent<FighterMovement>();
-            _movement.SetGravityScale(fighterData.gravityScale);
             StateMachine = new FighterStateMachine();
         }
 
         private void Start()
         {
+            _movement.SetGravityScale(fighterData.gravityScale);
             StateMachine.Initialize(State.Idle, this, fighterData);
             FacingDirection = 1;
+
+            InputHandler.AttackEvent.AddListener(Attack);
         }
 
         private void Update()
@@ -85,6 +87,11 @@ namespace Fighter.Common
         public void Jump(float velocity)
         {
             _movement.Jump(velocity);
+        }
+
+        private void Attack()
+        {
+            Debug.Log("Attacking");
         }
     }
 }
