@@ -8,11 +8,6 @@ namespace Fighter.Common
     {
         public Vector2 MovementInput { get; protected set; }
         public bool JumpInput { get; protected set; }
-        public UnityEvent AttackEvent { get; protected set; }
-
-        protected virtual void Awake()
-        {
-            AttackEvent = new UnityEvent();
-        }
+        public bool AttackInput { get; protected set; }
     }
 }

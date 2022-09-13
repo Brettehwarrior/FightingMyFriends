@@ -1,14 +1,14 @@
 ﻿using System;
+using Fighter.Common.Collisions;
 using Fighter.Common.StateMachine;
 using Fighter.Data;
 using UnityEngine;
 
 namespace Fighter.Common
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IHittable
     {
         // Components
-        public FighterStateMachine StateMachine { get; private set; }
         public FighterInputHandler InputHandler { get; private set; }
         
         // Values
@@ -17,6 +17,7 @@ namespace Fighter.Common
         public bool IsGrounded { get; private set; }
         
         // Private members
+        private FighterStateMachine _stateMachine;
         private FighterMovement _movement;
 
         // Serialized Fields
@@ -31,34 +32,32 @@ namespace Fighter.Common
         {
             InputHandler = GetComponent<FighterInputHandler>();
             _movement = GetComponent<FighterMovement>();
-            StateMachine = new FighterStateMachine();
+            _stateMachine = new FighterStateMachine();
         }
 
         private void Start()
         {
             _movement.SetGravityScale(fighterData.gravityScale);
-            StateMachine.Initialize(State.Idle, this, fighterData);
+            _stateMachine.Initialize(State.Idle, this, fighterData);
             FacingDirection = 1;
-
-            InputHandler.AttackEvent.AddListener(Attack);
         }
 
         private void Update()
         {
-            StateMachine.CurrentState.Update();
+            _stateMachine.CurrentState.Update();
         }
         
         private void FixedUpdate()
         {
             Velocity = _movement.CurrentVelocity;
             IsGrounded = _movement.IsGrounded;
-            StateMachine.CurrentState.FixedUpdate();
+            _stateMachine.CurrentState.FixedUpdate();
         }
 
         private void LateUpdate()
         {
-            StateMachine.CurrentState.LateUpdate();
-            StateMachine.CurrentState.CheckTransitions();
+            _stateMachine.CurrentState.LateUpdate();
+            _stateMachine.CurrentState.CheckTransitions();
         }
 
         public void SetHorizontalVelocity(float velocity)
@@ -94,6 +93,16 @@ namespace Fighter.Common
         private void Attack()
         {
             Debug.Log("Attacking");
+        }
+
+        public void Hit(HurtboxData hurtboxData, bool shouldFlip)
+        {
+            Debug.Log("Hit");
+            _stateMachine.ChangeState(State.Knockback);
+            
+            // Set velocity according to hurtbox angle and knockback
+            SetHorizontalVelocity(hurtboxData.knockback * Mathf.Sin(hurtboxData.angle * Mathf.Deg2Rad * (shouldFlip?-1:1)));
+            SetVerticalVelocity(hurtboxData.knockback * Mathf.Cos(hurtboxData.angle * Mathf.Deg2Rad));
         }
     }
 }

@@ -112,8 +112,8 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &117870677823679675
 GameObject:
@@ -231,13 +231,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3605889063388372567}
   - component: {fileID: 3682274716932515584}
+  - component: {fileID: 6187354901104493299}
   m_Layer: 7
   m_Name: Jab Hit 3
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3605889063388372567
 Transform:
   m_ObjectHideFlags: 0
@@ -279,6 +280,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4949338, y: 0.73246837}
   m_EdgeRadius: 0
+--- !u!114 &6187354901104493299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073541730639062908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdbd93eae88417b9a7e6e7a62b6e767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hurtboxData: {fileID: 11400000, guid: d9dc3b44407eca5438b6658ed3d1e2cc, type: 2}
 --- !u!1 &1423397183214633083
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,13 +303,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3800909492326541499}
   - component: {fileID: 377572038312960000}
+  - component: {fileID: 1075344788409164544}
   m_Layer: 7
   m_Name: Jab Hit 4
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3800909492326541499
 Transform:
   m_ObjectHideFlags: 0
@@ -337,6 +352,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4949338, y: 0.73246837}
   m_EdgeRadius: 0
+--- !u!114 &1075344788409164544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423397183214633083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdbd93eae88417b9a7e6e7a62b6e767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hurtboxData: {fileID: 11400000, guid: 9c911af493a4da547a7d82578b54a5ee, type: 2}
 --- !u!1 &7106645902751735060
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,13 +375,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5375164985682827115}
   - component: {fileID: 4736165642650316945}
+  - component: {fileID: 5358404891402045972}
   m_Layer: 7
   m_Name: Jab Hit 2
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5375164985682827115
 Transform:
   m_ObjectHideFlags: 0
@@ -395,6 +424,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3879211, y: 0.8394809}
   m_EdgeRadius: 0
+--- !u!114 &5358404891402045972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106645902751735060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdbd93eae88417b9a7e6e7a62b6e767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hurtboxData: {fileID: 11400000, guid: e36ce89018f57f84f90e5db743cde2fd, type: 2}
 --- !u!1 &7277214950998427523
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,13 +447,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3028902840493498050}
   - component: {fileID: 6943716912364980841}
+  - component: {fileID: 2820388422794116742}
   m_Layer: 7
   m_Name: Jab Hit 1
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3028902840493498050
 Transform:
   m_ObjectHideFlags: 0
@@ -453,6 +496,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0267532, y: 0.6254566}
   m_EdgeRadius: 0
+--- !u!114 &2820388422794116742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277214950998427523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdbd93eae88417b9a7e6e7a62b6e767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hurtboxData: {fileID: 11400000, guid: 185d9758ced332249bc46ad9fe36a491, type: 2}
 --- !u!1 &8692764459074680323
 GameObject:
   m_ObjectHideFlags: 0

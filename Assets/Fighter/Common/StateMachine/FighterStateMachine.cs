@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Fighter.Common.StateMachine.States;
 using Fighter.Common.StateMachine.States.SubStates;
 using Fighter.Data;
 
@@ -10,7 +11,10 @@ namespace Fighter.Common.StateMachine
         Walk,
         Jump,
         Land,
-        Fall
+        Fall,
+        Knockback,
+        
+        Jab
     }
     
     public class FighterStateMachine
@@ -28,6 +32,9 @@ namespace Fighter.Common.StateMachine
                 {State.Jump, new FighterJumpState(fighter, this, data, "Jerma Jump")},
                 {State.Land, new FighterLandingState(fighter, this, data, "Jerma Landing")},
                 {State.Fall, new FighterFallState(fighter, this, data, "Jerma Fall")},
+                {State.Knockback, new FighterKnockbackState(fighter, this, data, "Jerma Hurt")},
+                
+                {State.Jab, new JermaJabState(fighter, this, data, "Jerma Jab")}
             };
             
             CurrentState = _states[startingStateType];

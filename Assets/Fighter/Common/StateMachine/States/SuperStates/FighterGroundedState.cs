@@ -22,6 +22,11 @@ namespace Fighter.Common.StateMachine.States.SuperStates
             {
                 stateMachine.ChangeState(State.Fall);
             }
+            // Jab transition
+            else if (fighter.InputHandler.AttackInput)
+            {
+                stateMachine.ChangeState(State.Jab);
+            }
         }
     }
 }

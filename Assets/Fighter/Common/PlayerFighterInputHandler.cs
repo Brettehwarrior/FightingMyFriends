@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -13,9 +14,8 @@ namespace Fighter.Common
         private InputAction _jumpAction;
         private InputAction _attackAction;
     
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             _playerInput = GetComponent<PlayerInput>();
         
             _moveAction = _playerInput.actions["Move"];
@@ -41,6 +41,13 @@ namespace Fighter.Common
             _attackAction.performed -= Attack;
         }
 
+        private void LateUpdate()
+        {
+            // Reset rising edge bools
+            JumpInput = false;
+            AttackInput = false;
+        }
+
         private void Move(InputAction.CallbackContext ctx)
         {
             var direction = ctx.ReadValue<Vector2>();
@@ -54,7 +61,7 @@ namespace Fighter.Common
 
         private void Attack(InputAction.CallbackContext ctx)
         {
-            AttackEvent.Invoke();
+            AttackInput = ctx.ReadValue<float>() != 0f;
         }
     }
 }
