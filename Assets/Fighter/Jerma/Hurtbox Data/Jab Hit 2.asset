@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 53
   knockback: 2.1
-  damage: 5
+  damage: 0.1
+  hitStop: 0.1
+  hitEffectPrefab: {fileID: 4788632407037286235, guid: 6e01ff482ab362a4498c01f331dbdd90, type: 3}

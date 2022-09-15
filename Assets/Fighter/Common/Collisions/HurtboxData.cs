@@ -8,5 +8,8 @@ namespace Fighter.Common.Collisions
         [Range(0f, 360f)] public float angle = 90f;
         public float knockback = 20f;
         public float damage = 5f;
+        public float hitStop = 0.1f;
+        
+        public GameObject hitEffectPrefab;
     }
 }

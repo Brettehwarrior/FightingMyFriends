@@ -36,11 +36,27 @@ namespace Fighter.Common.Collisions
             
             // Flip direction based on transform rotation
             // TODO: This depends on heirarchy structure
+            // It's actually kind of disgusting
+            
             var hitboxRotation = transform.parent.parent.rotation;
             Debug.Log(hitboxRotation.eulerAngles);
             bool shouldFlip = Mathf.Abs(hitboxRotation.eulerAngles.y) > 0f;
             
+            // Do hit
             hittable.Hit(_hurtboxData, shouldFlip);
+            
+            // Do hitpause effect
+            HitEffectManager.Instance.PauseEffect(new []{transform.parent.parent.parent.parent.gameObject, hitObject}, _hurtboxData.hitStop);
+            
+            // Spawn hit effect
+            if (_hurtboxData.hitEffectPrefab != null)
+            {
+                var position = collision.ClosestPoint(transform.position);
+                var effectPosition = new Vector3(position.x, position.y, transform.position.z-0.5f);
+                Instantiate(_hurtboxData.hitEffectPrefab, effectPosition, Quaternion.identity);
+            }
+            
+            // Add hit target to no hit list
             _hitObjects.Add(hitObject);
         }
 

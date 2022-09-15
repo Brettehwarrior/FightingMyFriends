@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce9ce522c4d4e6caca8d739f052f29a, type: 3}
   m_Name: Jab Hit 3
   m_EditorClassIdentifier: 
-  angle: 69
+  angle: 132
   knockback: 6.73
-  damage: 5
+  damage: 0.1
+  hitStop: 0.1
+  hitEffectPrefab: {fileID: 4788632407037286235, guid: 6e01ff482ab362a4498c01f331dbdd90, type: 3}

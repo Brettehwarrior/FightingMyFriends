@@ -15,3 +15,5 @@ MonoBehaviour:
   angle: 42
   knockback: 15
   damage: 5
+  hitStop: 0.3
+  hitEffectPrefab: {fileID: 4788632407037286235, guid: 6e01ff482ab362a4498c01f331dbdd90, type: 3}
